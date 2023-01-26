@@ -2,6 +2,7 @@
 #Installerer programmer som kreves før selve programmet.
 sudo apt update -y
 sudo apt upgrade -y
+sudo apt install curl -y
 sudo apt install ffmpeg -y
 sudo apt install python -y
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
