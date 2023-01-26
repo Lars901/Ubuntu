@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #Installerer programmer som kreves før selve programmet.
 sudo apt update -y
 sudo apt upgrade -y
