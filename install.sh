@@ -22,3 +22,6 @@ sudo apt install brave-browser
 echo "deb http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list; wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg
 sudo apt update && sudo apt install nala -y
 sudo nala fetch
+#Fonts
+sudo apt-get install ttf-mscorefonts-installer -y
+wget -qO- http://plasmasturm.org/dl/vistafonts-... | bash
