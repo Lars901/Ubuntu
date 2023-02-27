@@ -22,6 +22,15 @@ sudo apt install brave-browser
 echo "deb http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list; wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg
 sudo apt update && sudo apt install nala -y
 sudo nala fetch
+#KVM 
+sudo apt -y install qemu-kvm libvirt-daemon bridge-utils virtinst libvirt-daemon-system
+sudo apt -y install virt-top libguestfs-tools libosinfo-bin  qemu-system virt-manager
+sudo modprobe vhost_net
+sudo tee  /etc/apt/sources.list.d/swtpm-tools.list<<EOF
+deb [trusted=yes] http://ppa.launchpad.net/stefanberger/swtpm-jammy/ubuntu jammy main
+EOF
+sudo apt update -y && sudo apt -y install ovmf swtpm swtpm-tools virt-manager virt-viewer
+
 #Fonts
 sudo apt-get install ttf-mscorefonts-installer -y
-wget -qO- http://plasmasturm.org/dl/vistafonts-... | bash
+wget -qO- http://plasmasturm.org/dl/vistafonts-... | bash   
