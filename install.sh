@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-sudo apt purge snapd -y
+sudo apt purge -y snapd 
 sudo apt-mark hold snapd -y
 sudo snap remove firefox
 sudo apt install plasma-discover-backend-flatpak flatpak
@@ -8,6 +8,9 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak install flathub org.DolphinEmu.dolphin-emu
 #Universe Repo
 sudo add-apt repository universe
+#Multiverse Repo
+sudo add-apt-repository multiverse
+sudo apt update
 
 # Graphics Drivers find and install
 if lspci | grep -E "NVIDIA|GeForce"; then
@@ -47,16 +50,16 @@ PKGS=(
 'gdebi-core'
 'gcc'
 'gdisk'
-'grub-customizer'
 'haveged'
 'htop'
 'nftables'
-'inkscape' #Vector drawing
+'inkscape' #Vector Graphics Editor
 #'openjdk-17-jdk' # Java 17
 #'openjdk-17-jre' #Java 17 jre
 'qt5-style-kvantum'
 'libnewt-dev'
 'libtool'
+'libreoffice'
 'lsof'
 'lutris'
 'lzop'
@@ -138,7 +141,7 @@ echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https:/
 sudo apt update
 sudo apt install codium -y
 
-#brave
+#Brave Browser
 sudo apt install curl -y
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
@@ -150,5 +153,5 @@ sudo apt update && sudo apt install nala -y
 sudo nala fetch
 
 #Fonts
-sudo apt-get install -y ttf-mscorefonts-installer
-wget -qO- http://plasmasturm.org/dl/vistafonts-installer | bash
+wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
+sudo dpkg -i ttf-mscorefonts-installer_3.6_all.deb
