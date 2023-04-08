@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 sudo apt purge snapd -y
 sudo apt-mark hold snapd -y
-snap list
 sudo snap remove firefox
-sudo apt install plasma-discover-backend-flatpak
+sudo apt install plasma-discover-backend-flatpak flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+#Dolphin Emu
+flatpak install flathub org.DolphinEmu.dolphin-emu
+#Universe Repo
 sudo add-apt repository universe
 
 #extra programs
@@ -36,15 +39,5 @@ sudo apt update -y && sudo apt -y install ovmf swtpm swtpm-tools virt-manager vi
 sudo apt-get install -y ttf-mscorefonts-installer
 wget -qO- http://plasmasturm.org/dl/vistafonts-installer | bash
 
-#Dolphin-Emu
-sudo apt-add-repository ppa:dolphin-emu/ppa
-sudo apt update -y
-sudo apt install -y dolphin-emu
-
-#Cemu
-sudo apt install -y cmake curl freeglut3-dev git libgcrypt20-dev libgtk-3-dev libpulse-dev libsecret-1-dev libsystemd-dev nasm ninja-build cmake
-sudo apt install -y clang-12
-git clone --recursive https://github.com/cemu-project/Cemu
-cd Cemu
-cmake -S . -B build -DCMAKE_BUILD_TYPE=release -DCMAKE_C_COMPILER=/usr/bin/clang-12 -DCMAKE_CXX_COMPILER=/usr/bin/clang++-12 -G Ninja -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja
-cmake --build build
+#Telegram
+sudo apt install -y telegram-desktop
