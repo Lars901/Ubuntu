@@ -32,5 +32,18 @@ EOF
 sudo apt update -y && sudo apt -y install ovmf swtpm swtpm-tools virt-manager virt-viewer
 
 #Fonts
-sudo apt-get install ttf-mscorefonts-installer -y
-wget -qO- http://plasmasturm.org/dl/vistafonts-... | bash   
+sudo apt-get install -y ttf-mscorefonts-installer
+wget -qO- http://plasmasturm.org/dl/vistafonts-installer | bash
+
+#Dolphin-Emu
+sudo apt-add-repository ppa:dolphin-emu/ppa
+sudo apt update -y
+sudo apt install -ydolphin-emu
+
+#Cemu
+sudo apt install -y cmake curl freeglut3-dev git libgcrypt20-dev libgtk-3-dev libpulse-dev libsecret-1-dev libsystemd-dev nasm ninja-build
+sudo apt install -y clang-12
+git clone --recursive https://github.com/cemu-project/Cemu
+cd Cemu
+cmake -S . -B build -DCMAKE_BUILD_TYPE=release -DCMAKE_C_COMPILER=/usr/bin/clang-12 -DCMAKE_CXX_COMPILER=/usr/bin/clang++-12 -G Ninja -DCMAKE_MAKE_PROGRAM=/usr/bin/ninja
+cmake --build build
