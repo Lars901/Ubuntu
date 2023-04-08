@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-sudo apt purge snapd
-sudo apt-mark hold snapd
+sudo apt purge snapd -y
+sudo apt-mark hold snapd -y
 snap list
 sudo snap remove firefox
 sudo apt install plasma-discover-backend-flatpak
@@ -38,10 +38,10 @@ wget -qO- http://plasmasturm.org/dl/vistafonts-installer | bash
 #Dolphin-Emu
 sudo apt-add-repository ppa:dolphin-emu/ppa
 sudo apt update -y
-sudo apt install -ydolphin-emu
+sudo apt install -y dolphin-emu
 
 #Cemu
-sudo apt install -y cmake curl freeglut3-dev git libgcrypt20-dev libgtk-3-dev libpulse-dev libsecret-1-dev libsystemd-dev nasm ninja-build
+sudo apt install -y cmake curl freeglut3-dev git libgcrypt20-dev libgtk-3-dev libpulse-dev libsecret-1-dev libsystemd-dev nasm ninja-build cmake
 sudo apt install -y clang-12
 git clone --recursive https://github.com/cemu-project/Cemu
 cd Cemu
