@@ -37,7 +37,7 @@ cd "$builddir" || exit
 rm -rf Nordzy-cursors
 
 # Install  Layan Cursors
-git clone https://github.com/alvatip/Nordzy-cursors
+git clone https://github.com/vinceliuice/Layan-cursors
 cd Layan-cursors || exit
 ./install.sh
 cd "$builddir" || exit
