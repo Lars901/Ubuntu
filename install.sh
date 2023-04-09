@@ -74,7 +74,6 @@ PKGS=(
 'ark' # compression
 'apt-transport-https' #Dependecy for Brave
 'kio-audiocd' 
-'kitty'
 'autoconf' # build
 'automake' # build
 'bash-completion'
