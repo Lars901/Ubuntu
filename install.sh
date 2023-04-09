@@ -50,10 +50,26 @@ sudo git clone https://github.com/EliverLara/Nordic.git
 sudo apt purge -y snapd 
 sudo apt-mark hold snapd -y
 sudo snap remove firefox
-sudo apt install plasma-discover-backend-flatpak flatpak
+sudo apt install -y plasma-discover-backend-flatpak
+
+#Flatpaks
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
 #Dolphin Emu
 flatpak install flathub org.DolphinEmu.dolphin-emu
+
+#Discord
+flatpak install flathub com.discordapp.Discord
+
+#RPCS3 Emu
+cd "$builddir" || exit
+wget https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-7081b89e976ad7f931c926022bd93ddd9778347c/rpcs3-v0.0.27-14845-7081b89e_linux64.AppImage
+wget http://dus01.ps3.update.playstation.net/update/ps3/image/us/2023_0228_05fe32f5dc8c78acbcd84d36ee7fdc5b/PS3UPDAT.PUP
+chmod a+x ./rpcs3-*_linux64.AppImage && ./rpcs3-*_linux64.AppImage
+
+#Wallpaper downloader
+flatpak install flathub es.estoes.wallpaperDownloader
+
 #Universe Repo
 sudo add-apt repository universe
 #Multiverse Repo
@@ -84,7 +100,7 @@ PKGS=(
 'breeze'
 'btrfs-progs'
 'celluloid' # video players
-'cups'
+'cups' #Common Unix Printing System
 'curl'
 'dialog'
 'dosfstools'
@@ -139,7 +155,6 @@ PKGS=(
 'fonts-terminus'
 'flatpak'
 'flameshot'
-'telegram-desktop'
 'traceroute'
 'telegram-desktop' #Instant messaging client
 'ufw'
@@ -175,12 +190,6 @@ sudo adduser $User libvirt
 sudo adduser $User libvirt-qemu
 sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
 
-sudo apt install plasma-discover-backend-flatpak
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-#Dolphin Emu
-flatpak install flathub org.DolphinEmu.dolphin-emu
-#Wallpaper downloader
-flatpak install flathub es.estoes.wallpaperDownloader
 #extra programs
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
 echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list
@@ -201,7 +210,13 @@ sudo nala fetch
 
 #Libreoffice from Nala
 sudo nala install libreoffice
+
 #Fonts
 cd "$builddir"
 wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
 sudo dpkg -i ttf-mscorefonts-installer_3.6_all.deb
+
+#Bible applications
+sudo add-apt-repository ppa:pkgcrosswire/ppa
+sudo apt update -y
+sudo apt install xiphos -y
