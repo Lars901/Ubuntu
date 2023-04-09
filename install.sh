@@ -57,6 +57,8 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 #Dolphin Emu
 flatpak install flathub org.DolphinEmu.dolphin-emu
+cd "/home/$username"
+wget https://static.emulatorgames.net/static3/roms/gamecube/Legend%20of%20Zelda,%20The%20-%20The%20Wind%20Waker%20(USA).7z
 
 #Discord
 flatpak install flathub com.discordapp.Discord
