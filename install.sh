@@ -8,10 +8,7 @@ mkdir -p "/home/$username/.config"
 mkdir -p "/home/$username/.fonts"
 mkdir -p "/home/$username/Pictures"
 mkdir -p /usr/share/sddm/themes
-cp .Xresources "/home/$username"
-cp .Xnord "/home/$username"
-cp -R dotconfig/* "/home/$username/.config/"
-cp bg.jpg "/home/$username/Pictures/"
+#cp bg.jpg "/home/$username/Pictures/"
 chown -R "$username:$username" "/home/$username"
 
 # Installing fonts
@@ -48,7 +45,7 @@ rm -Layan-cursors
 
 # Download Nordic Theme
 cd /usr/share/themes/ || exit
-git clone https://github.com/EliverLara/Nordic.git
+sudo git clone https://github.com/EliverLara/Nordic.git
 
 sudo apt purge -y snapd 
 sudo apt-mark hold snapd -y
@@ -108,7 +105,6 @@ PKGS=(
 'qt5-style-kvantum'
 'libnewt-dev'
 'libtool'
-'libreoffice'
 'lsof'
 'lutris'
 'lzop'
@@ -201,6 +197,8 @@ echo "deb http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.l
 sudo apt update && sudo apt install nala -y
 sudo nala fetch
 
+#Libreoffice from Nala
+sudo nala install libreoffice
 #Fonts
 cd "$builddir"
 wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
