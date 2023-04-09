@@ -1,4 +1,52 @@
 #!/usr/bin/env bash
+username=$(id -u -n 1000)
+builddir=$(pwd)
+
+# Making .config and Moving config files and background to Pictures
+cd "$builddir" || exit
+mkdir -p "/home/$username/.config"
+mkdir -p "/home/$username/.fonts"
+mkdir -p "/home/$username/Pictures"
+mkdir -p /usr/share/sddm/themes
+cp .Xresources "/home/$username"
+cp .Xnord "/home/$username"
+cp -R dotconfig/* "/home/$username/.config/"
+cp bg.jpg "/home/$username/Pictures/"
+chown -R "$username:$username" "/home/$username"
+
+# Installing fonts
+cd "$builddir" || exit
+sudo nala install fonts-font-awesome -y
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+unzip FiraCode.zip -d "/home/$username/.fonts"
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
+unzip Meslo.zip -d "/home/$username/.fonts"
+mv dotfonts/fontawesome/otfs/*.otf "/home/$username/.fonts/"
+chown "$username:$username" "/home/$username/.fonts/*"
+
+# Reloading Font
+fc-cache -vf
+# Removing zip Files
+rm ./FiraCode.zip ./Meslo.zip
+
+# Install Nordzy cursor
+git clone https://github.com/alvatip/Nordzy-cursors
+cd Nordzy-cursors || exit
+./install.sh
+cd "$builddir" || exit
+rm -rf Nordzy-cursors
+
+# Install  Layan Cursors
+git clone https://github.com/alvatip/Nordzy-cursors
+cd Layan-cursors || exit
+./install.sh
+cd "$builddir" || exit
+rm -Layan-cursors 
+
+# Download Nordic Theme
+cd /usr/share/themes/ || exit
+git clone https://github.com/EliverLara/Nordic.git
+
 sudo apt purge -y snapd 
 sudo apt-mark hold snapd -y
 sudo snap remove firefox
