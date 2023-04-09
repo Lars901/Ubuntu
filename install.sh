@@ -202,5 +202,6 @@ sudo apt update && sudo apt install nala -y
 sudo nala fetch
 
 #Fonts
-cd "$builddir"wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
+cd "$builddir"
+wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
 sudo dpkg -i ttf-mscorefonts-installer_3.6_all.deb
