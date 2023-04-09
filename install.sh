@@ -32,12 +32,15 @@ rm ./FiraCode.zip ./Meslo.zip
 # Install Nordzy cursor
 git clone https://github.com/alvatip/Nordzy-cursors
 cd Nordzy-cursors || exit
+chmod +x ./install.sh
 ./install.sh
 cd "$builddir" || exit
 rm -rf Nordzy-cursors
 
 # Install  Layan Cursors
 git clone https://github.com/vinceliuice/Layan-cursors
+chmod +x ./install.sh
+cd "$builddir" || exit
 cd Layan-cursors || exit
 ./install.sh
 cd "$builddir" || exit
@@ -88,7 +91,6 @@ PKGS=(
 'curl'
 'dialog'
 'dosfstools'
-'exfat-utils'
 'fonts-terminus'
 'flex'
 'fuse3'
@@ -200,5 +202,5 @@ sudo apt update && sudo apt install nala -y
 sudo nala fetch
 
 #Fonts
-wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
+cd "$builddir"wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
 sudo dpkg -i ttf-mscorefonts-installer_3.6_all.deb
