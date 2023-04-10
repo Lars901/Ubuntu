@@ -2,86 +2,9 @@
 username=$(id -u -n 1000)
 builddir=$(pwd)
 
-# Making .config and Moving config files and background to Pictures
-cd "$builddir" || exit
-mkdir -p "/home/$username/.config"
-mkdir -p "/home/$username/.fonts"
-mkdir -p "/home/$username/Pictures"
-mkdir -p /usr/share/sddm/themes
-#cp bg.jpg "/home/$username/Pictures/"
-chown -R "$username:$username" "/home/$username"
-
-# Installing fonts
-cd "$builddir" || exit
-sudo nala install fonts-font-awesome -y
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
-unzip FiraCode.zip -d "/home/$username/.fonts"
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
-unzip Meslo.zip -d "/home/$username/.fonts"
-mv dotfonts/fontawesome/otfs/*.otf "/home/$username/.fonts/"
-chown "$username:$username" "/home/$username/.fonts/*"
-
-# Reloading Font
-fc-cache -vf
-# Removing zip Files
-rm ./FiraCode.zip ./Meslo.zip
-
-# Install Nordzy cursor
-git clone https://github.com/alvatip/Nordzy-cursors
-cd Nordzy-cursors || exit
-chmod +x ./install.sh
-./install.sh
-cd "$builddir" || exit
-rm -rf Nordzy-cursors
-
-# Install  Layan Cursors
-git clone https://github.com/vinceliuice/Layan-cursors
-chmod +x ./install.sh
-cd "$builddir" || exit
-cd Layan-cursors || exit
-./install.sh
-cd "$builddir" || exit
-rm -Layan-cursors 
-
-# Download Nordic Theme
-cd /usr/share/themes/ || exit
-sudo git clone https://github.com/EliverLara/Nordic.git
-
-sudo apt purge -y snapd 
-sudo apt-mark hold snapd -y
-sudo snap remove firefox
-sudo apt install -y plasma-discover-backend-flatpak
-
-#Flatpaks
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-#Dolphin Emu
-flatpak install flathub org.DolphinEmu.dolphin-emu
-cd "/home/$username"
-wget https://static.emulatorgames.net/static3/roms/gamecube/Legend%20of%20Zelda,%20The%20-%20The%20Wind%20Waker%20(USA).7z
-
-#Discord
-flatpak install flathub com.discordapp.Discord
-
-#RPCS3 Emu
-cd "$builddir" || exit
-wget https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-7081b89e976ad7f931c926022bd93ddd9778347c/rpcs3-v0.0.27-14845-7081b89e_linux64.AppImage
-wget http://dus01.ps3.update.playstation.net/update/ps3/image/us/2023_0228_05fe32f5dc8c78acbcd84d36ee7fdc5b/PS3UPDAT.PUP
-chmod a+x ./rpcs3-*_linux64.AppImage && ./rpcs3-*_linux64.AppImage
-
-#Wallpaper downloader
-flatpak install flathub es.estoes.wallpaperDownloader
-
-#Universe Repo
-sudo add-apt repository universe
-#Multiverse Repo
-sudo add-apt-repository multiverse
-sudo apt update
-
 # Graphics Drivers find and install
 if lspci | grep -E "NVIDIA|GeForce"; then
-    sudo apt -y install nvidia
-	nvidia-xconfig
+    sudo apt -y install nvidia nvidia-xconfig
 elif lspci | grep -E "Radeon"; then
     sudo apt -y install xserver-xorg-video-amdgpu firmware-amd-graphics
 elif lspci | grep -E "Integrated Graphics Controller"; then
@@ -185,6 +108,92 @@ for PKG in "${PKGS[@]}"; do
     echo "INSTALLING: ${PKG}"
     sudo apt -y install "$PKG"
 done
+
+# Making .config and Moving config files and background to Pictures
+cd "$builddir" || exit
+mkdir -p "/home/$username/.config"
+mkdir -p "/home/$username/.fonts"
+mkdir -p "/home/$username/Pictures"
+mkdir -p /usr/share/sddm/themes
+#cp bg.jpg "/home/$username/Pictures/"
+chown -R "$username:$username" "/home/$username"
+
+# Installing fonts
+cd "$builddir" || exit
+sudo nala install fonts-font-awesome -y
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+unzip FiraCode.zip -d "/home/$username/.fonts"
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip
+unzip Meslo.zip -d "/home/$username/.fonts"
+mv dotfonts/fontawesome/otfs/*.otf "/home/$username/.fonts/"
+chown "$username:$username" "/home/$username/.fonts/*"
+
+# Reloading Font
+fc-cache -vf
+# Removing zip Files
+rm ./FiraCode.zip ./Meslo.zip
+
+# Install Nordzy cursor
+git clone https://github.com/alvatip/Nordzy-cursors
+cd Nordzy-cursors || exit
+chmod +x ./install.sh
+./install.sh
+cd "$builddir" || exit
+rm -rf Nordzy-cursors
+
+# Install  Layan Cursors
+git clone https://github.com/vinceliuice/Layan-cursors
+chmod +x ./install.sh
+cd "$builddir" || exit
+cd Layan-cursors || exit
+./install.sh
+cd "$builddir" || exit
+rm -Layan-cursors 
+
+# Download Nordic Theme
+cd /usr/share/themes/ || exit
+sudo git clone https://github.com/EliverLara/Nordic.git
+
+sudo apt purge -y snapd 
+sudo apt-mark hold snapd -y
+sudo snap remove firefox
+sudo apt install -y plasma-discover-backend-flatpak
+
+#___________________________________#
+#Flatpaks
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+#Spotify
+flatpak install flathub com.spotify.Client
+#Dolphin Emu
+flatpak install flathub org.DolphinEmu.dolphin-emu
+cd "/home/$username"
+wget https://static.emulatorgames.net/static3/roms/gamecube/Legend%20of%20Zelda,%20The%20-%20The%20Wind%20Waker%20(USA).7z
+
+#RPCS3 Emu
+flatpak install flathub net.rpcs3.RPCS3
+cd "$builddir" || exit
+wget http://dus01.ps3.update.playstation.net/update/ps3/image/us/2023_0228_05fe32f5dc8c78acbcd84d36ee7fdc5b/PS3UPDAT.PUP
+
+#Discord
+flatpak install flathub com.discordapp.Discord
+
+#Wallpaper downloader
+flatpak install flathub es.estoes.wallpaperDownloader
+
+#Bible applications
+flatpak install flathub org.xiphos.Xiphos
+
+#Github Desktop 
+flatpak install flathub io.github.shiftey.Desktop
+#_______________________________________________________________________#
+
+#Universe Repo
+sudo add-apt repository universe
+#Multiverse Repo
+sudo add-apt-repository multiverse
+sudo apt update
+
+
 
 sudo dpkg-reconfigure console-setup
 #sudo systemctl status libvirtd.service
