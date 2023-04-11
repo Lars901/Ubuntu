@@ -157,34 +157,37 @@ sudo git clone https://github.com/EliverLara/Nordic.git
 sudo apt purge -y snapd 
 sudo apt-mark hold snapd -y
 sudo snap remove firefox
+
+#Flatpak Requirements
 sudo apt install -y plasma-discover-backend-flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 #___________________________________#
 #Flatpaks
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
 #Spotify
-flatpak install flathub com.spotify.Client
+flatpak install -y flathub com.spotify.Client
 #Dolphin Emu
-flatpak install flathub org.DolphinEmu.dolphin-emu
+flatpak install -y flathub org.DolphinEmu.dolphin-emu
 cd "/home/$username"
-wget https://downloads.romspedia.com/roms/Legend%20of%20Zelda%2C%20The%20-%20The%20Wind%20Waker%20%28USA%29.7z
+#wget https://downloads.romspedia.com/roms/Legend%20of%20Zelda%2C%20The%20-%20The%20Wind%20Waker%20%28USA%29.7z
 
 #RPCS3 Emu
-flatpak install flathub net.rpcs3.RPCS3
+flatpak install -y flathub net.rpcs3.RPCS3
 cd "$builddir" || exit
 wget http://dus01.ps3.update.playstation.net/update/ps3/image/us/2023_0228_05fe32f5dc8c78acbcd84d36ee7fdc5b/PS3UPDAT.PUP
 
 #Discord
-flatpak install flathub com.discordapp.Discord
+flatpak install -y flathub com.discordapp.Discord
 
 #Wallpaper downloader
-flatpak install flathub es.estoes.wallpaperDownloader
+flatpak install -y flathub es.estoes.wallpaperDownloader
 
 #Bible applications
-flatpak install flathub org.xiphos.Xiphos
+flatpak install -y flathub org.xiphos.Xiphos
 
 #Github Desktop 
-flatpak install flathub io.github.shiftey.Desktop
+flatpak install -y flathub io.github.shiftey.Desktop
 #_______________________________________________________________________#
 
 #Universe Repo
