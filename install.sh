@@ -196,9 +196,6 @@ sudo add-apt repository universe
 sudo add-apt-repository multiverse
 sudo apt update
 
-
-
-sudo dpkg-reconfigure console-setup
 #sudo systemctl status libvirtd.service
 sudo adduser $User libvirt
 sudo adduser $User libvirt-qemu
@@ -229,3 +226,4 @@ sudo nala install libreoffice
 cd "$builddir"
 wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
 sudo dpkg -i ttf-mscorefonts-installer_3.6_all.deb
+update-alternatives --config editor
