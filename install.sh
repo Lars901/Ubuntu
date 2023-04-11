@@ -226,4 +226,4 @@ sudo nala install libreoffice
 cd "$builddir"
 wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
 sudo dpkg -i ttf-mscorefonts-installer_3.6_all.deb
-update-alternatives --config editor
+sudo update-alternatives --config editor
