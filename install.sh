@@ -167,7 +167,7 @@ flatpak install flathub com.spotify.Client
 #Dolphin Emu
 flatpak install flathub org.DolphinEmu.dolphin-emu
 cd "/home/$username"
-wget https://static.emulatorgames.net/static3/roms/gamecube/Legend%20of%20Zelda,%20The%20-%20The%20Wind%20Waker%20(USA).7z
+wget https://downloads.romspedia.com/roms/Legend%20of%20Zelda%2C%20The%20-%20The%20Wind%20Waker%20%28USA%29.7z
 
 #RPCS3 Emu
 flatpak install flathub net.rpcs3.RPCS3
@@ -226,8 +226,3 @@ sudo nala install libreoffice
 cd "$builddir"
 wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
 sudo dpkg -i ttf-mscorefonts-installer_3.6_all.deb
-
-#Bible applications
-sudo add-apt-repository ppa:pkgcrosswire/ppa
-sudo apt update -y
-sudo apt install xiphos -y
