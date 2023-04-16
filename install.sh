@@ -195,7 +195,7 @@ sudo add-apt repository universe
 #Multiverse Repo
 sudo add-apt-repository multiverse
 sudo apt update
-sudo apt install -y ubuntu-restricted-extras
+sudo apt install -y kubuntu-restricted-extras
 
 #sudo systemctl status libvirtd.service
 sudo adduser $User libvirt
