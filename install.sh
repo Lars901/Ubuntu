@@ -109,13 +109,15 @@ for PKG in "${PKGS[@]}"; do
     sudo apt -y install "$PKG"
 done
 
-# Making .config and Moving config files and background to Pictures
+# Making .config and Moving config files and background to Pictures/Wallpapers
 cd "$builddir" || exit
 mkdir -p "/home/$username/.config"
 mkdir -p "/home/$username/.fonts"
 mkdir -p "/home/$username/Pictures"
+mkdir -p "/home/$username/Wallpapers"
 mkdir -p /usr/share/sddm/themes
-#cp bg.jpg "/home/$username/Pictures/"
+cd /Wallpapers
+cp *.jpg /$HOME/$USER/Pictures/Wallpapers
 chown -R "$username:$username" "/home/$username"
 
 # Installing fonts
