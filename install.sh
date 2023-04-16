@@ -143,13 +143,12 @@ rm -rf Nordzy-cursors
 
 # Install  Layan Cursors
 git clone https://github.com/vinceliuice/Layan-cursors
-chmod +x ./install.sh
-cd "$builddir" || exit
 cd Layan-cursors || exit
+chmod +x ./install.sh
 ./install.sh
 cd "$builddir" || exit
 rm -Layan-cursors 
-
+ 
 # Download Nordic Theme
 cd /usr/share/themes/ || exit
 sudo git clone https://github.com/EliverLara/Nordic.git
