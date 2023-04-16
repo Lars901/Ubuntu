@@ -41,8 +41,8 @@ PKGS=(
 'htop'
 'nftables'
 'inkscape' #Vector Graphics Editor
-#'openjdk-17-jdk' # Java 17
-#'openjdk-17-jre' #Java 17 jre
+'openjdk-17-jdk' # Java 17
+'openjdk-17-jre' #Java 17 jre
 'qt5-style-kvantum'
 'libnewt-dev'
 'libtool'
@@ -229,3 +229,7 @@ cd "$builddir"
 wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
 sudo dpkg -i ttf-mscorefonts-installer_3.6_all.deb
 sudo update-alternatives --config editor
+
+#Minecraft Java Edition Launcher
+wget https://launcher.mojang.com/download/Minecraft.deb
+sudo dpkg -i Minecraft.deb
