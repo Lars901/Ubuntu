@@ -168,3 +168,6 @@ sudo apt update
 echo "deb http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list; wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg
 sudo apt update && sudo apt install nala -y
 sudo nala fetch
+
+#Broadcom BCM 4312 wifi
+sudo apt remove firmware-b43-installer && sudo apt install --reinstall bcmwl-kernel-source 
