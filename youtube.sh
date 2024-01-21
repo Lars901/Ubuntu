@@ -6,5 +6,5 @@ sudo apt install curl -y
 sudo apt install ffmpeg -y
 sudo apt install python -y
 sudo apt install -y yt-dlp
-wget https://dl.4kdownload.com/app/4kvideodownloader_4.23.0-1_amd64.deb
-sudo dpkg -i 4kvideodownloader_4.23.0-1_amd64.deb
+wget https://dl.4kdownload.com/app/4kvideodownloaderplus_1.4.0-1_amd64.deb?source=website
+sudo dpkg -i 4kvideodownloaderplus_1.4.0-1_amd64.deb
