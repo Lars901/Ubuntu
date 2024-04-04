@@ -59,6 +59,7 @@ PKGS=(
 'snapper'
 'systemsettings'
 'flameshot'
+'fontforge'
 'traceroute'
 'ufw'
 'unrar'
